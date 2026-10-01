@@ -1,0 +1,2 @@
+# Copy to suppression.txt (gitignored). Never email these.
+# One email address or domain per line. check_replies.py adds unsubscribes and bounces automatically.

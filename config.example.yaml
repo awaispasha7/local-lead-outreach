@@ -1,0 +1,48 @@
+# Copy to config.yaml (which is gitignored) and fill in.
+
+# What to search. Every niche is searched in every city.
+# With source: local_services, niches must be Google Local Services categories, for example
+# plumber, electrician, hvac, roofer, handyman, general_contractor.
+# Full list: https://serpapi.com/google-local-services-queries.json
+niches:
+  - plumber
+  - electrician
+  - hvac
+cities:
+  - "Austin, TX"
+
+# Lead source:
+#   local_services  -> Google Local Services Ads (businesses paying Google for calls).
+#                      Costs 1 extra SerpAPI search per lead to find its website.
+#   maps            -> Plain Google Maps results (cheaper, website included, less qualified).
+source: local_services
+
+# Schedule. Runs are spread evenly across run_between (local time). `python3 schedule.py` prints the cron.
+runs_per_day: 1
+run_between: "09:00-17:00"
+weekdays_only: true
+
+# Sending.
+#   auto_send: false -> emails go to your Drafts folder for you to review and send (recommended to start).
+#   auto_send: true  -> emails are sent automatically via SMTP (a copy is filed in Sent).
+auto_send: false
+max_sends_per_day: 10          # extra emails wait in data/drafts/ for the next run
+send_delay_seconds: [20, 45]   # random pause between sends
+
+# Maximum new leads queued per run (also caps SerpAPI website lookups).
+max_new_leads_per_run: 8
+
+# Who the emails come from. Claude uses this when writing.
+sender:
+  name: "Your Name"
+  title: "Founder"
+  company: "Your Company"
+  website: "https://example.com"
+  # Required by CAN-SPAM: a real postal address, added to every email footer.
+  postal_address: "123 Example St, City, ST 00000"
+
+# What you're offering. Claude builds each email around this.
+offer: |
+  Describe your product or service in 2–3 sentences, and who it's for.
+
+call_to_action: "Open to a 10-minute call this week?"

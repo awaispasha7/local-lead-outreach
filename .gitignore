@@ -1,0 +1,9 @@
+# Secrets and personal settings
+.env
+config.yaml
+suppression.txt
+
+# Lead data, drafts, sent history
+data/
+
+__pycache__/
